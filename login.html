@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Đăng Nhập và Đăng Ký</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(https://suachualaptop24h.com/upload_images/images/2024/08/06/hinh-nen-san-bong-dep-banner.jpg);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 320px;
+        }
+        h2 {
+            text-align: center;
+        }
+        .input-group {
+            margin-bottom: 25px;
+            margin-right: 12px;
+        }
+        .input-group label {
+            font-size: 20px;
+            color: #333;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;            margin-top: 10px;
+            border: 4px solid #ccc;
+            border-radius: 10px;
+        }
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            margin-top:10px;;
+        }
+        .form-buttons button {
+            width: 48%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .switch-link {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Form đăng nhập -->
+        <div id="login-form">
+            <h2>Đăng Nhập</h2>
+            <form action="login.php" method="POST">
+                <div class="input-group">
+                    <label for="login-username">Tên người dùng</label>
+                    <input type="text" id="login-username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Mật khẩu</label>
+                    <input type="password" id="login-password" name="password" required>
+                </div>
+                <div class="form-buttons">
+                    <button type="submit">Đăng Nhập</button>
+                </div>
+            </form>
+            <p class="switch-link">Chưa có tài khoản? <a href="signup.html">Đăng ký ngay</a></p>
+        </div>
+
+    </div>
+
+   
+</body>
+</html>
