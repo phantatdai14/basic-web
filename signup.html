@@ -1,118 +1,509 @@
 <!DOCTYPE html>
 <html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang Đăng Ký</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-image: url(https://suachualaptop24h.com/upload_images/images/2024/08/06/hinh-nen-san-bong-dep-banner.jpg);
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Ký - Premier League VN</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* SIGNUP PAGE STYLES */
+    .signup-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #00ff85 0%, #00e676 50%, #00c853 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signup-page::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=1920&h=1080&fit=crop');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .signup-container {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .signup-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .signup-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .signup-logo-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #00ff85, #37003c);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 24px;
+      margin-right: 15px;
+      box-shadow: 0 10px 30px rgba(0, 255, 133, 0.3);
+    }
+
+    .signup-title {
+      font-size: 28px;
+      color: #37003c;
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .signup-subtitle {
+      color: #666;
+      margin: 10px 0 0 0;
+      font-size: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #37003c;
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid #e1e5e9;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: #f8f9fa;
+      box-sizing: border-box;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #00ff85;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(0, 255, 133, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .form-group input::placeholder {
+      color: #adb5bd;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+    }
+
+    .form-row .form-group {
+      flex: 1;
+    }
+
+    .signup-button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #00ff85, #00e676);
+      color: #37003c;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .signup-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .signup-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 255, 133, 0.3);
+    }
+
+    .signup-button:hover::before {
+      left: 100%;
+    }
+
+    .signup-button:active {
+      transform: translateY(0);
+    }
+
+    .form-footer {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #e1e5e9;
+    }
+
+    .form-footer p {
+      color: #666;
+      margin: 0 0 15px 0;
+    }
+
+    .form-footer a {
+      color: #37003c;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .form-footer a:hover {
+      color: #00ff85;
+    }
+
+    .back-to-home {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #37003c;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-to-home:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .terms-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    .terms-checkbox input[type="checkbox"] {
+      width: auto;
+      margin-top: 2px;
+    }
+
+    .terms-checkbox a {
+      color: #37003c;
+      text-decoration: none;
+    }
+
+    .terms-checkbox a:hover {
+      text-decoration: underline;
+    }
+
+    .password-strength {
+      margin-top: 5px;
+      font-size: 12px;
+    }
+
+    .strength-bar {
+      height: 4px;
+      background: #e1e5e9;
+      border-radius: 2px;
+      margin: 5px 0;
+      overflow: hidden;
+    }
+
+    .strength-fill {
+      height: 100%;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .strength-weak .strength-fill {
+      width: 33%;
+      background: #dc3545;
+    }
+
+    .strength-medium .strength-fill {
+      width: 66%;
+      background: #ffc107;
+    }
+
+    .strength-strong .strength-fill {
+      width: 100%;
+      background: #28a745;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      .signup-container {
+        padding: 30px 20px;
+        margin: 10px;
       }
-      .form-container {
-        background-color: white;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 320px;
+
+      .signup-title {
+        font-size: 24px;
       }
-      h2 {
-        text-align: center;
+
+      .form-row {
+        flex-direction: column;
+        gap: 0;
       }
-      .input-group {
-        margin-bottom: 25px;
-        margin-right: 12px;
+
+      .back-to-home {
+        position: relative;
+        top: auto;
+        left: auto;
+        margin-bottom: 20px;
+        display: inline-flex;
       }
-      .input-group label {
-        font-size: 20px;
-        color: #333;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
       }
-      .input-group input {
-        width: 100%;
-        padding: 8px;
-        margin-top: 10px;
-        border: 4px solid #ccc;
-        border-radius: 10px;
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
-      .form-buttons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 10px;
-      }
-      .form-buttons button {
-        width: 48%;
-        padding: 10px;
-        background-color: #007bff;
-        color: white;
-        border: 10px;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      .form-buttons button:hover {
-        background-color: #0056b3;
-      }
-      .switch-link {
-        display: block;
-        text-align: center;
-        margin-top: 10px;
-        font-size: 14px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="form-container">
-      <!-- Form đăng ký -->
-      <div id="signup-form">
-        <h2>Đăng Ký</h2>
-        <form action="signup.php" method="POST">
-          <div class="input-group">
-            <label for="login-username">Tên người dùng</label>
-            <input type="text" id="login-username" name="username" required />
+    }
+
+    .signup-container {
+      animation: fadeInUp 0.6s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="signup-page">
+    <a href="homepage.html" class="back-to-home">
+      ← Về trang chủ
+    </a>
+
+    <div class="signup-container">
+      <div class="signup-header">
+        <div class="signup-logo">
+          <div class="signup-logo-icon">🏟️</div>
+          <div>
+            <h1 class="signup-title">Đăng Ký</h1>
+            <p class="signup-subtitle">Tham gia cộng đồng bóng đá</p>
           </div>
-          <div class="input-group">
-            <label for="login-username">Email</label>
-            <input type="email" id="login-username" name="username" required />
-          </div>
-          <div class="input-group">
-            <label for="signup-password">Mật khẩu</label>
-            <input
-              type="password"
-              id="signup-password"
-              name="password"
-              required
-            />
-          </div>
-          <div class="form-buttons">
-            <button type="submit">Đăng ký</button>
-          </div>
-        </form>
-        <p class="switch-link">
-          Đã có tài khoản?
-          <a href="login.html"
-            >Đăng nhập ngay</a
-          >
-        </p>
+        </div>
       </div>
+
+      <form id="signupForm" action="#" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">Họ</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Nhập họ" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Tên</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Nhập tên" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="username">Tên đăng nhập</label>
+          <input type="text" id="username" name="username" placeholder="Nhập tên đăng nhập" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Nhập địa chỉ email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Số điện thoại</label>
+          <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Mật khẩu</label>
+          <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+          <div class="password-strength">
+            <div class="strength-bar">
+              <div class="strength-fill"></div>
+            </div>
+            <div class="strength-text">Độ mạnh mật khẩu</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Xác nhận mật khẩu</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Nhập lại mật khẩu" required>
+        </div>
+
+        <div class="form-group">
+          <label for="favoriteTeam">Đội bóng yêu thích</label>
+          <select id="favoriteTeam" name="favoriteTeam"
+            style="width: 100%; padding: 15px 20px; border: 2px solid #e1e5e9; border-radius: 12px; font-size: 16px; background: #f8f9fa; box-sizing: border-box;">
+            <option value="">Chọn đội bóng yêu thích</option>
+            <option value="arsenal">🔴⚪ Arsenal</option>
+            <option value="chelsea">💙🔵 Chelsea</option>
+            <option value="liverpool">🔴🔴 Liverpool</option>
+            <option value="mancity">💙💙 Manchester City</option>
+            <option value="manunited">🔴👹 Manchester United</option>
+            <option value="tottenham">⚪🐓 Tottenham</option>
+            <option value="newcastle">⚫⚪ Newcastle</option>
+            <option value="astonvilla">🦁💜 Aston Villa</option>
+            <option value="other">Khác</option>
+          </select>
+        </div>
+
+        <div class="terms-checkbox">
+          <input type="checkbox" id="terms" name="terms" required>
+          <label for="terms">
+            Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a> của Premier League
+            VN
+          </label>
+        </div>
+
+        <button type="submit" class="signup-button">
+          Tạo Tài Khoản
+        </button>
+
+        <div class="form-footer">
+          <p>Đã có tài khoản?</p>
+          <a href="login.html">Đăng nhập ngay tại đây</a>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <script>
-      // Chuyển đổi giữa Form đăng nhập và đăng ký
-      function switchToRegister() {
-        document.getElementById("login-form").style.display = "none";
-        document.getElementById("register-form").style.display = "block";
+  <script>
+    // Password strength checker
+    document.getElementById('password').addEventListener('input', function (e) {
+      const password = e.target.value;
+      const strengthBar = document.querySelector('.password-strength');
+      const strengthText = document.querySelector('.strength-text');
+
+      let strength = 0;
+      if (password.length >= 8) strength++;
+      if (/[A-Z]/.test(password)) strength++;
+      if (/[0-9]/.test(password)) strength++;
+      if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+      strengthBar.className = 'password-strength';
+      if (strength <= 1) {
+        strengthBar.classList.add('strength-weak');
+        strengthText.textContent = 'Mật khẩu yếu';
+      } else if (strength <= 3) {
+        strengthBar.classList.add('strength-medium');
+        strengthText.textContent = 'Mật khẩu trung bình';
+      } else {
+        strengthBar.classList.add('strength-strong');
+        strengthText.textContent = 'Mật khẩu mạnh';
+      }
+    });
+
+    // Form submission
+    document.getElementById('signupForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+
+      if (password !== confirmPassword) {
+        showNotification('Mật khẩu xác nhận không khớp!', 'error');
+        return;
       }
 
-      function switchToLogin() {
-        document.getElementById("login-form").style.display = "block";
-        document.getElementById("register-form").style.display = "none";
-      }
-    </script>
-  </body>
+      const container = document.querySelector('.signup-container');
+      const button = document.querySelector('.signup-button');
+
+      // Add loading state
+      container.style.opacity = '0.7';
+      button.textContent = 'Đang tạo tài khoản...';
+
+      // Simulate signup process
+      setTimeout(() => {
+        showNotification('Đăng ký thành công! Chào mừng bạn đến với Premier League VN!', 'success');
+
+        setTimeout(() => {
+          window.location.href = 'login.html';
+        }, 2000);
+      }, 1500);
+    });
+
+    function showNotification(message, type) {
+      const notification = document.createElement('div');
+      notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#28a745' : '#dc3545'};
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                z-index: 1000;
+                animation: slideInRight 0.3s ease;
+                max-width: 300px;
+            `;
+      notification.textContent = message;
+      document.body.appendChild(notification);
+
+      setTimeout(() => {
+        notification.remove();
+      }, 4000);
+    }
+
+    // Add slide in animation
+    const style = document.createElement('style');
+    style.textContent = `
+            @keyframes slideInRight {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+    document.head.appendChild(style);
+  </script>
+</body>
+
 </html>
